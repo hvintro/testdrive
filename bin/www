@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('node-postgres-todo:server');
 var http = require('http');
-
+var pg = require('pg');
 /**
  * Get port from environment and store in Express.
  */
@@ -88,3 +88,16 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
