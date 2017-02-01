@@ -1,15 +1,18 @@
-const express = require('express');
-const router = express.Router();
-const pg = require('pg');
-const path = require('path');
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/preguntas';
+var express = require('express');
+var router = express.Router();
+var pg = require('pg');
+var path = require('path');
+var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/preguntas';
 
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.sendFile('index.html');
+  //res.sendFile('index.html');
+  res.render('index', { title: 'Express' });
 });
+
+
 
 router.post('/api/v1/preguntas', (req, res, next) => {
   const results = [];
