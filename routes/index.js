@@ -9,7 +9,7 @@ const path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-   res.sendFile('index.html');
+  res.sendFile(path.join(__dirname, '..', '..', 'client', 'views', 'index.html'));
 });
 
 router.post('/api/v1/preguntas', (req, res, next) => {
@@ -68,7 +68,7 @@ router.get('/api/v1/preguntas', (req, res, next) => {
 });
 
 
-/*router.get('/db', function (request, response) {
+router.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM preguntas', function(err, result) {
       done();
@@ -77,6 +77,6 @@ router.get('/api/v1/preguntas', (req, res, next) => {
       else
        { response.render('pages/db', {results: result.rows} ); }
     });
-});});*/
+});});
 
 module.exports = router;
