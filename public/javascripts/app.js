@@ -13,7 +13,11 @@ angular.module('nodeTodo', [])
   });
 
   $scope.createPregunta = () => {
-   $http.post('/api/v1/preguntas', $scope.formData)
+   console.log("haha" + $scope.formpregunta);
+   console.log("haha" + $scope.formcorrecta);
+   console.log("haha" + $scope.formexplicacio);
+   var Indata = {'pregunta': $scope.formpregunta, 'respuestaa': $scope.formrespuestaa , 'respuestab': $scope.formrespuestab , 'respuestac': $scope.formrespuestac, 'correcta': $scope.formcorrecta, 'explicacio' :$scope.formexplicacio };
+   $http.post('/api/v1/preguntas', Indata )
    .success((data) => {
      $scope.formData = {};
      $scope.todoData = data;
