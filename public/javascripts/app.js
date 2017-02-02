@@ -11,4 +11,29 @@ angular.module('nodeTodo', [])
   .error((error) => {
     console.log('Error: ' + error);
   });
+
+  $scope.createPregunta = () => {
+   $http.post('/api/v1/preguntas', $scope.formData)
+   .success((data) => {
+     $scope.formData = {};
+     $scope.todoData = data;
+     console.log(data);
+   })
+   .error((error) => {
+     console.log('Error: ' + error);
+   });
+ };
+
+ $scope.createTodo = () => {
+   $http.post('/api/v1/todos', $scope.formData)
+   .success((data) => {
+     $scope.formData = {};
+     $scope.todoData = data;
+     console.log(data);
+   })
+   .error((error) => {
+     console.log('Error: ' + error);
+   });
+ };
+
 });
