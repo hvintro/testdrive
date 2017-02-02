@@ -2,12 +2,12 @@ angular.module('nodeTodo', [])
 .controller('mainController', ($scope, $http) => {
   $scope.formData = {};
   $scope.todoData = {};
-  $scope.formpregunta = {};
+  /*$scope.formpregunta = {};
   $scope.formrespuestaa = {};
   $scope.formrespuestab = {};
   $scope.formrespuestac = {};
   $scope.formcorrecta = {};
-  $scope.formexplicacio = {};
+  $scope.formexplicacio = {};*/
 
   // Get all todos
   $http.get('/api/v1/preguntas')
